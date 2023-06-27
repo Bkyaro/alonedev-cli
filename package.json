@@ -1,0 +1,33 @@
+{
+  "name": "alone-dev-cli",
+  "version": "1.0.0",
+  "description": "-",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "alonedevtest": "./bin/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bkyaro/alonedev-cli.git",
+    "boxen": "^7.1.0",
+    "chalk": "^5.2.0",
+    "simple-git": "^3.19.1",
+    "yargs": "^17.7.2"
+  },
+  "author": "Jackal",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Bkyaro/alonedev-cli/issues"
+  },
+  "homepage": "https://github.com/Bkyaro/alonedev-cli#readme",
+  "type": "module",
+  "dependencies": {
+    "boxen": "^7.1.0",
+    "chalk": "^5.2.0",
+    "simple-git": "^3.19.1",
+    "yargs": "^17.7.2"
+  }
+}
