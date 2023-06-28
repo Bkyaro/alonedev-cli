@@ -15,15 +15,28 @@ console.log(
   })
 );
 
-const version = "1.0.0";
+const version = "1.0.2";
 
-const commandParam = process.argv[2];
-if (commandParam == "--help" || commandParam == "-h") {
+const commandParam = process.argv.slice(2);
+if (commandParam[0] == "--help" || commandParam[0] == "-h") {
   showHelp();
-} else if (commandParam == "--version" || commandParam == "-v") {
+} else if (commandParam[0] == "--version" || commandParam[0] == "-v") {
   console.log(version);
-} else if (!commandParam) {
+} else if (!commandParam?.length) {
   console.log(chalk.yellow("need help? try --help"));
 } else {
-  initializeProject(commandParam);
+  const installMethod = commandParam.includes("--npm")
+    ? "npm"
+    : commandParam.includes("--yarn")
+    ? "yarn"
+    : null;
+  const paramIndex = commandParam.indexOf(`--${installMethod}`);
+
+  if (paramIndex !== -1) {
+    commandParam.splice(paramIndex, 1);
+  }
+
+  let possibleProjectName = commandParam[0];
+
+  initializeProject(possibleProjectName, installMethod);
 }
