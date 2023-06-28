@@ -15,7 +15,7 @@ console.log(
   })
 );
 
-const version = "1.0.2";
+const version = "1.0.3";
 
 const commandParam = process.argv.slice(2);
 if (commandParam[0] == "--help" || commandParam[0] == "-h") {
