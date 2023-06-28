@@ -55,14 +55,15 @@ export default function initializeProject(projectName) {
           fs.mkdirSync(projectDir);
         }
         copyFiles(tempDir, projectDir, projectName);
+        console.log(chalk.green("文件复制完成🟩~🟩~⬜️~⬜️~⬜️"));
       } catch (err) {
-        chalk.red(
-          "拉取远程仓库失败，请排查模板代码库权限或网络连接🟩~🟥~⬜️~⬜️~⬜️",
-          err
+        console.error(
+          chalk.red(
+            "拉取远程仓库失败，请排查模板代码库权限或网络连接🟩~🟥~⬜️~⬜️~⬜️",
+            err
+          )
         );
       }
-
-      console.log(chalk.green("文件复制完成🟩~🟩~⬜️~⬜️~⬜️"));
 
       // console.log(chalk.yellow("正在初始化项目..."));
       // execSync("npm init", { stdio: "inherit", cwd: projectDir });
@@ -71,26 +72,31 @@ export default function initializeProject(projectName) {
       console.log(chalk.yellow("正在清理临时文件..."));
       try {
         deleteFolderRecursive(tempDir);
+        console.log(chalk.green("临时文件清理完成🟩~🟩~🟩~⬜️~⬜️"));
       } catch (err) {
-        chalk.red("临时文件清理失败🟩~🟩~🟥~⬜️~⬜️", err);
+        console.error(chalk.red("临时文件清理失败🟩~🟩~🟥~⬜️~⬜️", err));
       }
-      console.log(chalk.green("临时文件清理完成🟩~🟩~🟩~⬜️~⬜️"));
 
       console.log(chalk.yellow("正在初始化git..."));
       try {
         execSync("git init", { stdio: "inherit", cwd: projectDir });
+        console.log(chalk.green("初始化git完成🟩~🟩~🟩~🟩~⬜️"));
       } catch (err) {
-        chalk.red("初始化git失败，请尝试手动运行git init🟩~🟩~🟩~🟥~⬜️", err);
+        console.error(
+          chalk.red("初始化git失败，请尝试手动运行git init🟩~🟩~🟩~🟥~⬜️", err)
+        );
       }
-      console.log(chalk.green("初始化git完成🟩~🟩~🟩~🟩~⬜️"));
 
       console.log(chalk.yellow("正在安装依赖..."));
       try {
         execSync("npm install", { stdio: "inherit", cwd: projectDir });
+        console.log(chalk.green("依赖安装完成🟩~🟩~🟩~🟩~🟩"));
       } catch (err) {
-        chalk.red("执行依赖安装失败，请尝试手动安装🟩~🟩~🟩~🟩~🟥", err);
+        console.error(
+          chalk.red("执行依赖安装失败，请尝试手动安装🟩~🟩~🟩~🟩~🟥", err)
+        );
       }
-      console.log(chalk.green("依赖安装完成🟩~🟩~🟩~🟩~🟩"));
+
       console.log(chalk.green("🎉执行完毕🎉"));
     });
   }
